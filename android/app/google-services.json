@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "927181798647",
+    "project_id": "talk-line-b2cf5",
+    "storage_bucket": "talk-line-b2cf5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927181798647:android:00ad6a70abfa743d26a7f2",
+        "android_client_info": {
+          "package_name": "com.example.talk_line"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWiku22PryuMWedOylfXZg6weY5jaImYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
