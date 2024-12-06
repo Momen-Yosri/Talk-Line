@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:talk_line/app_colors.dart';
+import 'package:talk_line/provider/user_provider.dart';
 import 'package:talk_line/view/chat_screen/chat_screen.dart';
 import 'package:talk_line/view/home_screen/home_screen.dart';
 import 'package:talk_line/view/authentication/Auth_screen.dart';
@@ -13,16 +15,15 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(const MyApp());
+  runApp( ChangeNotifierProvider(child: MyApp(), create: (context) => UserProvider(),));
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+var userProvider = Provider.of<UserProvider>(context);
     return ScreenUtilInit(
       designSize: const Size(390, 850),
       minTextAdapt: true,
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => const HomeScreen(),
         ChatScreen.routeName: (context) => const ChatScreen(),
       },
-      initialRoute:  AuthenticationScreen.routeName,
+      initialRoute: userProvider.firebaseUser==null? AuthenticationScreen.routeName:HomeScreen.routeName,
     );
   },
     );

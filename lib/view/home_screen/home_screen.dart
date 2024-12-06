@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:talk_line/app_colors.dart';
 import 'package:talk_line/view/home_screen/widgets/contact_card.dart';
 
 class HomeScreen extends StatelessWidget {

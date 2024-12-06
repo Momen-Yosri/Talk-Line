@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:talk_line/view/authentication/widgets/custom_section.dart';
-import 'package:talk_line/view/authentication/widgets/login_templete.dart';
-import 'package:talk_line/view/authentication/widgets/register_templeter.dart';
+import 'package:talk_line/login/login_templete.dart';
+import 'package:talk_line/register/register_templeter.dart';
 
 class AuthenticationScreen extends StatefulWidget {
   static const String routeName="Authentication_screen";
