@@ -8,7 +8,7 @@ import 'package:talk_line/app_colors.dart';
 import 'package:talk_line/login/login_navigator.dart';
 import 'package:talk_line/login/login_view_model.dart';
 import 'package:talk_line/view/authentication/widgets/custom_form_field.dart';
-import 'package:talk_line/view/home_screen/home_screen.dart';
+import 'package:talk_line/view/home_screen/home_screen_view.dart';
 
 class LoginTemplate extends StatefulWidget {
 
@@ -97,8 +97,8 @@ void initState() {
    showDialog(
         context: context,
         builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(color: Colors.red,),
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryColor,),
           );
         });
   }
@@ -114,6 +114,6 @@ void initState() {
     //!because the provider used outside the build
      var userProvider = Provider.of<UserProvider>(context, listen: false);
      userProvider.user = user;
-      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(HomeScreenView.routeName);
   }
 }

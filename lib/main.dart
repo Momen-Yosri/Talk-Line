@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:talk_line/app_colors.dart';
 import 'package:talk_line/provider/user_provider.dart';
 import 'package:talk_line/view/chat_screen/chat_screen.dart';
-import 'package:talk_line/view/home_screen/home_screen.dart';
+import 'package:talk_line/view/home_screen/home_screen_view.dart';
 import 'package:talk_line/view/authentication/Auth_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -39,6 +39,7 @@ var userProvider = Provider.of<UserProvider>(context);
       ),
     ),
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.white), backgroundColor: MaterialStateProperty.all(AppColors.primaryColor))),
         textTheme: TextTheme(
           titleLarge: GoogleFonts.sora(color: Colors.black, fontSize: 24.sp, fontWeight: FontWeight.w400),
           titleMedium: GoogleFonts.sora(color: Colors.white, fontSize: 22.sp, fontWeight: FontWeight.w600),
@@ -52,10 +53,11 @@ var userProvider = Provider.of<UserProvider>(context);
       ),
       routes: {
         AuthenticationScreen.routeName: (context) =>  AuthenticationScreen(),
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        ChatScreen.routeName: (context) => const ChatScreen(),
+        HomeScreenView.routeName: (context) =>  HomeScreenView(),
+        ChatScreen.routeName: (context) =>  ChatScreen(),
+        // AddRoomView.routeName: (context) =>  AddRoomView(),
       },
-      initialRoute: userProvider.firebaseUser==null? AuthenticationScreen.routeName:HomeScreen.routeName,
+      initialRoute: userProvider.firebaseUser==null? AuthenticationScreen.routeName:HomeScreenView.routeName,
     );
   },
     );

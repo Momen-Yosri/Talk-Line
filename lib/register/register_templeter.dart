@@ -8,7 +8,7 @@ import 'package:talk_line/provider/user_provider.dart';
 import 'package:talk_line/register/register_navigator.dart';
 import 'package:talk_line/view/authentication/widgets/custom_form_field.dart';
 import 'package:talk_line/view/genrals/custom_snack_bar.dart';
-import 'package:talk_line/view/home_screen/home_screen.dart';
+import 'package:talk_line/view/home_screen/home_screen_view.dart';
 import 'package:talk_line/register/register_view_model.dart';
 
 class RegisterTemplate extends StatefulWidget {
@@ -155,8 +155,8 @@ viewModel.register(emailController.text,
    showDialog(
         context: context,
         builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(color: Colors.red,),
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryColor,),
           );
         });
   }
@@ -172,7 +172,7 @@ viewModel.register(emailController.text,
     //!because the provider used outside the build
      var userProvider = Provider.of<UserProvider>(context, listen: false);
      userProvider.user = user;
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
+      Navigator.of(context).pushNamed(HomeScreenView.routeName);
    }
 }
 

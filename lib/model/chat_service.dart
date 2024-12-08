@@ -1,20 +1,21 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class CahtService {
-//   // get instance of firestore
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-//   //get user stream
-//   Stream<List<Map<String, dynamic>>> getUserStream() {
-//     return _firestore
-//         .collection('users')
-//         .snapshots()
-//         .map(snapshots) {
-// return snapshot.docs.map((doc){
-//   fia
-// })
-//         }
-//   }
-//   // send message
+class ChatService {
+  // get instance of firestore
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  //get user stream
+  Stream<List<Map<String, dynamic>>> getUserStream() {
+    return _firestore
+        .collection('users')
+        .snapshots()
+        .map((snapshot) {
+return snapshot.docs.map((doc){
+            final user = doc.data();
+return user;
+}).toList();
+        });
+  }
+  // send message
 
-//   // get message stream
-// }
+  // get message stream
+}

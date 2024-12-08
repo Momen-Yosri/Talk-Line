@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:talk_line/app_colors.dart';
-
 class CustomTextFormField extends StatelessWidget {
   String label;
   String hint;
@@ -34,7 +33,7 @@ class CustomTextFormField extends StatelessWidget {
           border: OutlineInputBorder(),
           suffixIcon: isPassword
               ? IconButton(
-                  icon: Icon(Icons.visibility_off_outlined), onPressed: () {})
+                  icon:  Icon(Icons.visibility_off_outlined), onPressed: () {})
               : null),
       validator: validator,
       controller: controller,
