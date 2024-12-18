@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:talk_line/app_colors.dart';
-import 'package:talk_line/provider/user_provider.dart';
-import 'package:talk_line/view/chat_screen/chat_screen.dart';
-import 'package:talk_line/view/home_screen/home_screen_view.dart';
-import 'package:talk_line/view/authentication/Auth_screen.dart';
+import 'package:talk_line/core/style/app_colors.dart';
+import 'package:talk_line/core/provider/user_provider.dart';
+import 'package:talk_line/features/chat_screen/chat_screen.dart';
+import 'package:talk_line/features/home_screen/home_screen_view.dart';
+import 'package:talk_line/features/authentication/Auth_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
