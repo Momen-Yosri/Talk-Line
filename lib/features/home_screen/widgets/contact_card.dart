@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:talk_line/core/model/room_model.dart';
 import 'package:talk_line/features/chat_screen/chat_screen.dart';
-
 class RoomCard extends StatelessWidget {
   RoomModel room;
   // final String name;
