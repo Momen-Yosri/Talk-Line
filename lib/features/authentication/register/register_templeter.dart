@@ -44,7 +44,7 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
         child: Column(children: [
           CircleAvatar(
             radius: 50.r,
-            backgroundColor: Color(0xffF0F0F0),
+            backgroundColor: Colors.white,
             child: Icon(
               Icons.person,
               size: 50.r,
@@ -97,7 +97,7 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
                   return null;
                 }
               },
-              controller: passController),
+              controller: passController,isPassword: true,),
           SizedBox(
             height: 20.h,
           ),
@@ -111,7 +111,7 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
                   return null;
                 }
               },
-              controller: confirmController),
+              controller: confirmController,isPassword: true,),
           SizedBox(
             height: 36.h,
           ),
