@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/message_model.dart';
@@ -10,8 +11,8 @@ class ChatViewModel extends ChangeNotifier
   late ChatNavigator navigator;
   late UserModel currentUser;
   late RoomModel room;
-  void sendMessagea(String content)
-  async{
+  late Stream<QuerySnapshot<MessageModel>> groupMessages;
+  void sendMessagea(String content)async{
     MessageModel message = MessageModel(
       senderID: currentUser.id??"",
       roomID: room.roomId??"",
@@ -27,5 +28,8 @@ class ChatViewModel extends ChangeNotifier
       print(error);
     navigator.showMessage(error.toString());
     }
+  }
+  void listenForUpdatedMessages(){
+groupMessages= DataBaseUtils.getMessages(room.roomId);
   }
 }

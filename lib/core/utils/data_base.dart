@@ -72,5 +72,11 @@ class DataBaseUtils {
     message.messageID = documentReference.id;
     return documentReference.set(message); //!This saves the message object as a new document in Firestore at the documentReference location.
   }
- 
-}
+  // function to get a stream of messages
+  static Stream<QuerySnapshot<MessageModel>> getMessages(String roomID) {
+    return getMessageCollection(roomID).snapshots();
+    //! What is the diffrence between snapshot and get
+    // get return the data once 
+    // snapshot return the stream of data in real time
+  }
+ }
