@@ -33,11 +33,11 @@ class _AvatarSelectorState extends State<AvatarSelector> {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       builder: (BuildContext context) {
         return Container(
-          padding: EdgeInsets.all(16.0),
+          padding: REdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -53,8 +53,8 @@ class _AvatarSelectorState extends State<AvatarSelector> {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0.sp,
+                    mainAxisSpacing: 10.0.sp,
                   ),
                   itemCount: avatarImages.length,
                   itemBuilder: (context, index) {
@@ -85,6 +85,7 @@ class _AvatarSelectorState extends State<AvatarSelector> {
                         ),
                       ),
                     );
+                    
                   },
                 ),
               ),

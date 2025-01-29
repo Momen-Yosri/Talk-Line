@@ -19,7 +19,7 @@ class RoomCard extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: REdgeInsets.symmetric(vertical: 20.0),
+            padding: REdgeInsets.symmetric(vertical: 20.0,horizontal: 16.0),
             child: Row(children: [
               CircleAvatar(
                 backgroundImage: AssetImage("assets/images/room.png"),
