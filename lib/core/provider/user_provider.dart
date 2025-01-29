@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:talk_line/core/model/data_base.dart';
+import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/user_model.dart';
 // this class is used to save user info
 class UserProvider extends ChangeNotifier {

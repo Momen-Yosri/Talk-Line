@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_line/core/style/app_colors.dart';
-import 'package:talk_line/core/model/data_base.dart';
+import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/room_model.dart';
 import 'package:talk_line/features/authentication/widgets/custom_form_field.dart';
 import 'package:talk_line/features/chat_screen/chat_screen.dart';

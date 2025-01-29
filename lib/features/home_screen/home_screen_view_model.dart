@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk_line/core/model/data_base.dart';
+import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/room_model.dart';
 import 'package:talk_line/features/home_screen/home_screen_navigator.dart';
 

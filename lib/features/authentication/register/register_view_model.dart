@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:talk_line/core/model/data_base.dart';
+import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/user_model.dart';
 import 'package:talk_line/features/authentication/register/register_navigator.dart';
 
