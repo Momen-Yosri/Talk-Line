@@ -39,65 +39,195 @@ class _ChatScreenState extends State<ChatScreen> implements ChatNavigator {
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Scaffold(
+        backgroundColor: Colors.grey[100], // Light background for better contrast
         appBar: AppBar(
-            title: Row(
-          children: [
-            Image.asset(
-              "assets/images/room.png",
-              height: 40.h,
-              width: 40.w,
+          elevation: 1, // Subtle shadow
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: AppColors.primaryColor),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: AppColors.primaryColor.withOpacity(0.2),
+                    width: 2,
+                  ),
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    "assets/images/room.png",
+                    height: 40.h,
+                    width: 40.w,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(width: 12.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      args.roomName,
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      'Online', // You can make this dynamic
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.more_vert, color: AppColors.primaryColor),
+              onPressed: () {}, // Add room settings functionality
             ),
-            Text(args.roomName ),
           ],
-        )),
-        body: Column(children: [
-          Expanded(
-            child: StreamBuilder(
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: StreamBuilder(
                 stream: viewModel.groupMessages,
                 builder: (context, asyncSnapshot) {
                   if (asyncSnapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
+                    );
                   } else if (asyncSnapshot.hasError) {
-                    return Text("Error: ${asyncSnapshot.error}");
-                  } else {
-                    var messagesList = asyncSnapshot.data?.docs
-                            .map((doc) => doc.data())
-                            .toList() ??
-                        [];
-                    return ListView.builder(
-                      itemCount: messagesList.length ,
-                      itemBuilder: (context, index) {
-                        var message = messagesList[index];
-                        return  CustomMessage(message: message.messageContent,senderName: message.senderName,isSentByMe:message.senderID == viewModel.currentUser,);
-                      },
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.error_outline, 
+                            size: 48, 
+                            color: Colors.red[300]
+                          ),
+                          SizedBox(height: 16.h),
+                          Text(
+                            "Error: ${asyncSnapshot.error}",
+                            style: TextStyle(color: Colors.red[300]),
+                          ),
+                        ],
+                      ),
                     );
                   }
-                }),
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: TextFormField(
-                controller: messageController,
-                decoration: InputDecoration(
-                  hintText: "Type a message",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0.r),
+
+                  var messagesList = asyncSnapshot.data?.docs
+                          .map((doc) => doc.data())
+                          .toList() ??
+                      [];
+
+                  return ListView.builder(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 16.h,
+                    ),
+                    itemCount: messagesList.length,
+                    itemBuilder: (context, index) {
+                      var message = messagesList[index];
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 8.h),
+                        child: CustomMessage(
+                          message: message.messageContent,
+                          senderName: message.senderName,
+                          isSentByMe: message.senderID == viewModel.currentUser,
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 10,
+                    offset: Offset(0, -5),
                   ),
-                ),
-              )),
-              IconButton(
-                  onPressed: () {
-                    viewModel.sendMessagea(messageController.text);
-                  },
-                  icon: Icon(
-                    Icons.send,
-                    color: AppColors.primaryColor,
-                    size: 20.sp,
-                  ))
-            ],
-          ),
-        ]),
+                ],
+              ),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.w,
+                vertical: 12.h,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.attach_file,
+                      color: AppColors.primaryColor,
+                    ),
+                    onPressed: () {}, // Add attachment functionality
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      controller: messageController,
+                      decoration: InputDecoration(
+                        hintText: "Type a message",
+                        hintStyle: TextStyle(
+                          color: Colors.grey[400],
+                          fontSize: 14.sp,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[100],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24.r),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                          vertical: 10.h,
+                        ),
+                      ),
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                    ),
+                  ),
+                  SizedBox(width: 8.w),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        if (messageController.text.trim().isNotEmpty) {
+                          viewModel.sendMessagea(messageController.text);
+                          messageController.clear();
+                        }
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                        size: 20.sp,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

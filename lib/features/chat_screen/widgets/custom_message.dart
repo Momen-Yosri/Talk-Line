@@ -6,11 +6,11 @@ class CustomMessage extends StatelessWidget {
   final String senderAvatar;
   final bool isSentByMe;
 
-  const CustomMessage({
+   CustomMessage({
     Key? key,
     required this.message,
      required this.senderName ,
-     this.senderAvatar ='',
+     this.senderAvatar =' ',
     this.isSentByMe = false,
   }) : super(key: key);
 
