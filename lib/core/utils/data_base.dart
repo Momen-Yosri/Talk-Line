@@ -74,7 +74,7 @@ class DataBaseUtils {
   }
   // function to get a stream of messages
   static Stream<QuerySnapshot<MessageModel>> getMessages(String roomID) {
-    return getMessageCollection(roomID).snapshots();
+    return getMessageCollection(roomID).orderBy('dateTime').snapshots();
     //! What is the diffrence between snapshot and get
     // get return the data once 
     // snapshot return the stream of data in real time
