@@ -68,7 +68,7 @@ class _ChatScreenState extends State<ChatScreen> implements ChatNavigator {
                       itemCount: messagesList.length ,
                       itemBuilder: (context, index) {
                         var message = messagesList[index];
-                        return const CustomMessage(sender: true,);
+                        return  CustomMessage(message: message.messageContent,senderName: message.senderName,isSentByMe:message.senderID == viewModel.currentUser,);
                       },
                     );
                   }

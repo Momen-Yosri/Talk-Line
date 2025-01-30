@@ -36,6 +36,7 @@ var userProvider = Provider.of<UserProvider>(context);
       builder: (_ , child) {
         return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme:MyThemeData.AppTheme,
       routes: {
         AuthenticationScreen.routeName: (context) =>  AuthenticationScreen(),
