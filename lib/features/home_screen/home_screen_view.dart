@@ -12,6 +12,8 @@ import 'package:talk_line/features/home_screen/home_screen_navigator.dart';
 import 'package:talk_line/features/home_screen/home_screen_view_model.dart';
 import 'package:talk_line/features/home_screen/widgets/contact_card.dart';
 
+import '../../core/provider/user_provider.dart';
+
 class HomeScreenView extends StatefulWidget {
   static const String routeName = "home_screen";
 
@@ -28,6 +30,7 @@ class _HomeScreenViewState extends State<HomeScreenView>
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   HomeScreenViewModel viewModel = HomeScreenViewModel();
 
+
   @override
   void initState() {
     super
@@ -37,7 +40,10 @@ class _HomeScreenViewState extends State<HomeScreenView>
 
   @override
   Widget build(BuildContext context) {
+      var provider = Provider.of<UserProvider>(context);
+
     return ChangeNotifierProvider(
+
       create: (context) => viewModel,
       child: Scaffold(
           appBar: AppBar(
@@ -46,7 +52,7 @@ class _HomeScreenViewState extends State<HomeScreenView>
               child: Image.asset("assets/images/Ellipse 5.png"),
             ),
             title: Text(
-              "Jira Mo'men",
+              provider.user?.name??"name",
               style: Theme.of(context).textTheme.titleMedium,
             ),
             actions: [

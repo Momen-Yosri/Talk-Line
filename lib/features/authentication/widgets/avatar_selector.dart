@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AvatarSelector extends StatefulWidget {
   final Function(String) onAvatarSelected;
@@ -16,17 +17,17 @@ class AvatarSelector extends StatefulWidget {
 class _AvatarSelectorState extends State<AvatarSelector> {
   String? selectedAvatar;
   
-  // List of avatar image paths
   final List<String> avatarImages = [
-    'assets/images/avatars/avatar1.jpg',
-    'assets/images/avatars/avatar2.jpg',
-    'assets/images/avatars/avatar3.jpg',
-    'assets/images/avatars/avatar4.jpg',
-    'assets/images/avatars/avatar5.jpg',
-    'assets/images/avatars/avatar6.jpg',
-    'assets/images/avatars/avatar7.jpg',
-    'assets/images/avatars/avatar8.jpg',
-    'assets/images/avatars/avatar9.jpg',
+    'assets/svg/avatars/1.svg',
+    'assets/svg/avatars/2.svg',
+    'assets/svg/avatars/3.svg',
+    'assets/svg/avatars/4.svg',
+    'assets/svg/avatars/5.svg',
+    'assets/svg/avatars/6.svg',
+    'assets/svg/avatars/7.svg',
+    'assets/svg/avatars/8.svg',
+    'assets/svg/avatars/9.svg',
+  
   ];
 
   void _openAvatarSelectionSheet(BuildContext context) {
@@ -78,7 +79,7 @@ class _AvatarSelectorState extends State<AvatarSelector> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
+                          child: SvgPicture.asset(
                             avatarImages[index],
                             fit: BoxFit.cover,
                           ),
@@ -114,7 +115,7 @@ class _AvatarSelectorState extends State<AvatarSelector> {
             ),
             child: selectedAvatar != null
                 ? ClipOval(
-                    child: Image.asset(
+                    child: SvgPicture.asset(
                       selectedAvatar!,
                       fit: BoxFit.cover,
                     ),
