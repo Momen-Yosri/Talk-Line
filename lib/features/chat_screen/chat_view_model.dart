@@ -18,7 +18,8 @@ class ChatViewModel extends ChangeNotifier
       roomID: room.roomId??"",
       dateTime: DateTime.now().millisecondsSinceEpoch, 
       messageContent: content, 
-      senderName: currentUser.name??""
+      senderName: currentUser.name??"",
+      senderAvatar: currentUser.avatar?? ""
     );
     try{  
       var result =await DataBaseUtils.insertMessage(message);

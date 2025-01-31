@@ -17,4 +17,5 @@ class UserProvider extends ChangeNotifier {
       user = await DataBaseUtils.getUser(firebaseUser!.uid );
     }
   }
+  
 }
