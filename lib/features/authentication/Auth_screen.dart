@@ -27,6 +27,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        toolbarHeight: 32.h,
       ),
       resizeToAvoidBottomInset: true,
       body: Column(

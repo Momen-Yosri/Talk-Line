@@ -8,7 +8,7 @@ class CustomSnackBar {
         message,
         style: const TextStyle(color: Colors.black),
       ),
-      backgroundColor: isSuccess ? AppColors.secondaryColor : Colors.red,
+      backgroundColor: isSuccess ? AppColors.primaryColor : Colors.red,
       duration: const Duration(seconds: 3),
     );
 

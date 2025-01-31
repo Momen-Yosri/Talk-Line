@@ -27,7 +27,7 @@ class RegisterViewModel extends ChangeNotifier {
         print(user.id);
                  await DataBaseUtils.registerUser(user);
 navigator.hideLoading();
-navigator.showMessage("Registration successful, UID: ${userCredential.user?.uid ?? ""}", true);
+navigator.showMessage("Registration successful, Welcome! ${user.name??""} ", true);
 navigator.navigateToHome(user);
         
 

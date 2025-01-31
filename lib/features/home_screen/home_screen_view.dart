@@ -160,7 +160,7 @@ class _HomeScreenViewState extends State<HomeScreenView>
                 width: 10.w,
               ),
               IconButton(
-                icon: Icon(Icons.notifications),
+                icon: Icon(Icons.logout_outlined),
                 color: Colors.white,
                 onPressed: () {},
               ),
