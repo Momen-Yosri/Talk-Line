@@ -27,13 +27,13 @@ TalkLine is a real-time chat application that allows users to connect and commun
 
 ## 📸 Screenshots
 
-_(Add some screenshots here to showcase the UI)_
+_(I'll ADD screenshots here to showcase the UI, Soon...)_
 
 ## 🛠️ Installation & Setup
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/talkline.git
+   git clone https://github.com/Momen-Yosri/Talk-Line.git
    ```
 2. Navigate to the project directory:
    ```sh
