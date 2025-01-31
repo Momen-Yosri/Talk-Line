@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomMessage extends StatelessWidget {
   final String message;
@@ -6,11 +7,11 @@ class CustomMessage extends StatelessWidget {
   final String senderAvatar;
   final bool isSentByMe;
 
-  const CustomMessage({
+   CustomMessage({
     Key? key,
     required this.message,
      required this.senderName ,
-     this.senderAvatar ='',
+     required this.senderAvatar ,
     this.isSentByMe = false,
   }) : super(key: key);
 
@@ -80,14 +81,14 @@ class CustomMessage extends StatelessWidget {
   Widget _buildAvatar() {
     return CircleAvatar(
       radius: 20,
-      backgroundImage: Image.asset('assets/images/avatars/avatar6.jpg').image,
+      // backgroundImage: SvgPicture.asset(senderAvatar),
       backgroundColor: Colors.grey[300],
       child: senderAvatar.isEmpty
           ? Text(
               senderName[0].toUpperCase(),
               style: const TextStyle(fontSize: 20),
             )
-          : null,
+          : SvgPicture.asset(senderAvatar),
     );
   }
 }
