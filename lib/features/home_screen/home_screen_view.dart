@@ -98,8 +98,8 @@ class _HomeScreenViewState extends State<HomeScreenView>
                       ),
                       SizedBox(height: 20.h),
                       Center(
-                        child: Image.asset(
-                          "assets/images/room.png",
+                        child: SvgPicture.asset(
+                          "assets/svg/room.svg",
                           height: 150.h,
                           width: 150.w,
                         ),

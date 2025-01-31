@@ -22,14 +22,14 @@ class RoomCard extends StatelessWidget {
             padding: REdgeInsets.symmetric(vertical: 20.0,horizontal: 16.0),
             child: Row(children: [
               CircleAvatar(
-                backgroundImage: AssetImage("assets/images/room.png"),
+                backgroundImage: const AssetImage("assets/images/room.png"),
                 radius: 30.r,
               ),
               SizedBox(width: 16.w),Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(room.roomName??"error",style: Theme.of(context).textTheme.bodyLarge,),
-                  Text(room.roomDescription??"error",style: Theme.of(context).textTheme.bodyMedium),
+                  Text(room.roomName,style: Theme.of(context).textTheme.bodyLarge,),
+                  Text(room.roomDescription,style: Theme.of(context).textTheme.bodyMedium),
                 ],
               )]
               ),
