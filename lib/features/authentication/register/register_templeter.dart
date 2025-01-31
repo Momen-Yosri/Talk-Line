@@ -39,12 +39,20 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => viewModel,
-       child: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(children: [
+    return SafeArea(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.h,
+          ),
+          child: ChangeNotifierProvider(
+            create: (context) => viewModel,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
             AvatarSelector(
               onAvatarSelected: (String avatarPath) {
                 setState(() {
@@ -80,7 +88,7 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
                     return null;
                   }
                 },
-                controller: emailController,isPassword: true,),
+                controller: emailController,),
             SizedBox(
               height: 20.h,
             ),
@@ -110,7 +118,7 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
                     return null;
                   }
                 },
-                controller: confirmController),
+                controller: confirmController,isPassword: true,),
             SizedBox(
               height: 36.h,
             ),
@@ -133,13 +141,13 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
           ]),
         ),
       ),
-    );
+    )));
   }
 
   void validateForm(){
   if (_formKey.currentState!.validate() ){
 viewModel.register(emailController.text,
-                      passController.text, _formKey, nameController.text); }
+                      passController.text, _formKey, nameController.text,selectedAvatar??""); }
   else{
     print("Form validation failed.");
   }

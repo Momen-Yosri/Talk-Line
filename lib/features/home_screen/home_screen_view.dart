@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_line/core/style/app_colors.dart';
 import 'package:talk_line/core/utils/data_base.dart';
@@ -49,7 +50,7 @@ class _HomeScreenViewState extends State<HomeScreenView>
           appBar: AppBar(
             leading: Padding(
               padding: REdgeInsets.all(10.0),
-              child: Image.asset("assets/images/Ellipse 5.png"),
+              child: SvgPicture.asset(provider.user?.avatar??"assets/svg/avatars/1.svg"),
             ),
             title: Text(
               provider.user?.name??"name",

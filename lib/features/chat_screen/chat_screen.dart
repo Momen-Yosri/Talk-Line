@@ -147,7 +147,8 @@ class _ChatScreenState extends State<ChatScreen> implements ChatNavigator {
                         child: CustomMessage(
                           message: message.messageContent,
                           senderName: message.senderName,
-                          isSentByMe: message.senderID == viewModel.currentUser,
+                          isSentByMe: message.senderID == viewModel.currentUser.id,
+                          senderAvatar: viewModel.currentUser.avatar??'assets/svg/avatars/6.svg',
                         ),
                       );
                     },
