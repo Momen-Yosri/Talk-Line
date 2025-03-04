@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:talk_line/features/authentication/widgets/custom_section.dart';
 import 'package:talk_line/features/authentication/login/login_templete.dart';
 import 'package:talk_line/features/authentication/register/register_templeter.dart';
