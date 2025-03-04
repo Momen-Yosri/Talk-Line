@@ -1,6 +1,6 @@
-# TalkLine - Real-Time Chat App
+# Talk-Line - Real-Time Chat App
 
-TalkLine is a real-time chat application that allows users to connect and communicate seamlessly in group chats. With a smooth and interactive UI, TalkLine supports animations, user avatars, and a fully responsive design for an optimal experience across all devices.
+Talk-Line is a real-time chat application that allows users to connect and communicate seamlessly in group chats. With a smooth and interactive UI, Talk-Line supports animations, user avatars, and a fully responsive design for an optimal experience across all devices.
 
 ## ✨ Features
 
@@ -27,18 +27,17 @@ TalkLine is a real-time chat application that allows users to connect and commun
 
 ## 📸 Screenshots
 
-![Alt Text](assets/images/ss2.jpg)
-![Alt Text](assets/images/ss1.jpg)
+
 
 ## 🛠️ Installation & Setup
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/talkline.git
+   git clone https://github.com/Momen-Yosri/Talk-Line.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd talkline
+   cd Talk-Line
    ```
 3. Install dependencies:
    ```sh
@@ -78,8 +77,8 @@ lib/
 Contributions are welcome! Feel free to fork this repository, make your changes, and submit a pull request.
 
 ## 📧 Contact
-For support or collaboration, reach out to **your_email@example.com**.
+For support or collaboration, reach out to **momen.yosri@gmail.com**.
 
 ---
-💬 **TalkLine - Connect, Chat, Enjoy!**
+💬 **Talk-Line - Connect, Chat, Enjoy!**
 
