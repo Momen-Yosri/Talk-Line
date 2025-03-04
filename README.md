@@ -27,8 +27,10 @@ Talk-Line is a real-time chat application that allows users to connect and commu
 
 ## 📸 Screenshots
 
-![Alt Text](assets/images/ss2.jpg)
-![Alt Text](assets/images/ss1.jpg)
+<p align="center">
+  <img src="assets/images/ss2.jpg" alt="Screenshot 2" width="45%"/>
+  <img src="assets/images/ss1.jpg" alt="Screenshot 1" width="45%"/>
+</p>
 
 ## 🛠️ Installation & Setup
 
