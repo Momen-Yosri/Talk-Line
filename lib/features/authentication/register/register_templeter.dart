@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +10,8 @@ import 'package:talk_line/features/genrals/custom_snack_bar.dart';
 import 'package:talk_line/features/home_screen/home_screen_view.dart';
 import 'package:talk_line/features/authentication/register/register_view_model.dart';
 
+import '../widgets/avatar_selector.dart';
+
 class RegisterTemplate extends StatefulWidget {
   RegisterTemplate({super.key});
 
@@ -19,6 +20,7 @@ class RegisterTemplate extends StatefulWidget {
 }
 
 class _RegisterTemplateState extends State<RegisterTemplate> implements RegisterNavigator {
+  String? selectedAvatar;
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController nameController = TextEditingController();
@@ -37,109 +39,115 @@ class _RegisterTemplateState extends State<RegisterTemplate> implements Register
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => viewModel,
-      child: Form(
-        key: _formKey,
-        child: Column(children: [
-          CircleAvatar(
-            radius: 50.r,
-            backgroundColor: Color(0xffF0F0F0),
-            child: Icon(
-              Icons.person,
-              size: 50.r,
-              color: Colors.white,
-            ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.h,
           ),
-          SizedBox(height: 20.h),
-          CustomTextFormField(
-              label: "Name",
-              hint: "Mo'men Yosri",
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) {
-                  return "Name is required";
-                }
-                return null;
-              },
-              controller: nameController),
-          SizedBox(
-            height: 20.h,
-          ),
-          CustomTextFormField(
-              label: "Email",
-              hint: "momen@developer.com",
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) {
-                  return "email is required";
-                }
-                final bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(text);
-                if (!emailValid) {
-                  return "please enter a valid email";
-                } else {
+          child: ChangeNotifierProvider(
+            create: (context) => viewModel,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+            AvatarSelector(
+              onAvatarSelected: (String avatarPath) {
+                setState(() {
+                  selectedAvatar = avatarPath;
+                });}),
+            SizedBox(height: 20.h),
+            CustomTextFormField(
+                label: "Name",
+                hint: "Mo'men Yosri",
+                validator: (text) {
+                  if (text == null || text.trim().isEmpty) {
+                    return "Name is required";
+                  }
                   return null;
-                }
-              },
-              controller: emailController),
-          SizedBox(
-            height: 20.h,
-          ),
-          CustomTextFormField(
-              label: "Password",
-              hint: "",
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) {
-                  return "password is required";
-                } else if (text.trim().length < 8) {
-                  return "password must be at least 8 characters";
-                } else {
-                  return null;
-                }
-              },
-              controller: passController),
-          SizedBox(
-            height: 20.h,
-          ),
-          CustomTextFormField(
-              label: "Confirm Password",
-              hint: "",
-              validator: (text) {
-                if (text != passController.text) {
-                  return "passwords do not match";
-                } else {
-                  return null;
-                }
-              },
-              controller: confirmController),
-          SizedBox(
-            height: 36.h,
-          ),
-          SizedBox(
-              width: 144.w,
-              height: 50.h,
-              child: ElevatedButton(
-                onPressed: () {
-                  validateForm();
                 },
-                child: const Text(
-                  "Register",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all(AppColors.primaryColor),
-                ),
-              )),
-        ]),
+                controller: nameController),
+            SizedBox(
+              height: 20.h,
+            ),
+            CustomTextFormField(
+                label: "Email",
+                hint: "momen@developer.com",
+                validator: (text) {
+                  if (text == null || text.trim().isEmpty) {
+                    return "email is required";
+                  }
+                  final bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(text);
+                  if (!emailValid) {
+                    return "please enter a valid email";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: emailController,),
+            SizedBox(
+              height: 20.h,
+            ),
+            CustomTextFormField(
+                label: "Password",
+                hint: "",
+                validator: (text) {
+                  if (text == null || text.trim().isEmpty) {
+                    return "password is required";
+                  } else if (text.trim().length < 8) {
+                    return "password must be at least 8 characters";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: passController,isPassword: true,),
+            SizedBox(
+              height: 20.h,
+            ),
+            CustomTextFormField(
+                label: "Confirm Password",
+                hint: "",
+                validator: (text) {
+                  if (text != passController.text) {
+                    return "passwords do not match";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: confirmController,isPassword: true,),
+            SizedBox(
+              height: 36.h,
+            ),
+            SizedBox(
+                width: 144.w,
+                height: 50.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    validateForm();
+                  },
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        WidgetStateProperty.all(AppColors.primaryColor),
+                  ),
+                )),
+          ]),
+        ),
       ),
-    );
+    )));
   }
 
   void validateForm(){
   if (_formKey.currentState!.validate() ){
 viewModel.register(emailController.text,
-                      passController.text, _formKey, nameController.text); }
+                      passController.text, _formKey, nameController.text,selectedAvatar??""); }
   else{
     print("Form validation failed.");
   }

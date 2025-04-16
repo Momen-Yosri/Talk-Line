@@ -2,9 +2,10 @@
     <application
         android:label="talk_line"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:launchMode="singleTop"
             android:taskAffinity=""

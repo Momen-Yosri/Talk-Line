@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:talk_line/core/model/room_model.dart';
 import 'package:talk_line/features/chat_screen/chat_screen.dart';
-
 class RoomCard extends StatelessWidget {
   RoomModel room;
   // final String name;
@@ -20,17 +19,17 @@ class RoomCard extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: REdgeInsets.symmetric(vertical: 20.0),
+            padding: REdgeInsets.symmetric(vertical: 20.0,horizontal: 16.0),
             child: Row(children: [
               CircleAvatar(
-                backgroundImage: AssetImage("assets/images/room.png"),
+                backgroundImage: const AssetImage("assets/images/room.png"),
                 radius: 30.r,
               ),
               SizedBox(width: 16.w),Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(room.roomName??"error",style: Theme.of(context).textTheme.bodyLarge,),
-                  Text(room.roomDescription??"error",style: Theme.of(context).textTheme.bodyMedium),
+                  Text(room.roomName,style: Theme.of(context).textTheme.bodyLarge,),
+                  Text(room.roomDescription,style: Theme.of(context).textTheme.bodyMedium),
                 ],
               )]
               ),

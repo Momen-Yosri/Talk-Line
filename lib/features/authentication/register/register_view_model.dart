@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:talk_line/core/model/data_base.dart';
+import 'package:talk_line/core/utils/data_base.dart';
 import 'package:talk_line/core/model/user_model.dart';
 import 'package:talk_line/features/authentication/register/register_navigator.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   late RegisterNavigator navigator;
 
-   void register( String email, String password,  _formKey,  String name) async {
+   void register( String email, String password,  _formKey,  String name, String selectedAvatar) async {
         navigator.showLoading();
       try {
         print("Attempting to register with email: $email");
@@ -21,13 +21,13 @@ class RegisterViewModel extends ChangeNotifier {
         }
                 var userID =userCredential.user!.uid;
                                 print("Registration successful, UID: $userID");
-        UserModel user = UserModel(name: name, email: email, id: userID);
+        UserModel user = UserModel(name: name, email: email, id: userID, avatar:selectedAvatar);
         print(user.email);
         print(user.name);
         print(user.id);
                  await DataBaseUtils.registerUser(user);
 navigator.hideLoading();
-navigator.showMessage("Registration successful, UID: ${userCredential.user?.uid ?? ""}", true);
+navigator.showMessage("Registration successful, Welcome! ${user.name??""} ", true);
 navigator.navigateToHome(user);
         
 

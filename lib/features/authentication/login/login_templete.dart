@@ -64,7 +64,7 @@ void initState() {
                   }
                   else 
                   {return null;}
-                } ,hint: "",label:"password" ,controller: passwordController,),
+                } ,hint: "",label:"password" ,controller: passwordController,isPassword: true,),
                 SizedBox(
                   height: 36.h,
                 ),
